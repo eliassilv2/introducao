@@ -37,8 +37,9 @@ const index = () => {
                         <Card.Body>
                             <Card.Title>Condomínio Living Park Sul</Card.Title>
                             <Card.Text>
-                                O Condomínio Living Superquadra Park Sul é equipado
-                                com diversas instalações, como piscina.
+                                Descubra o Living Park Sul, um condomínio exclusivo e moderno localizado na vibrante cidade de Brasília.
+                                Combinando estilo de vida contemporâneo e conforto excepcional, o Living Park Sul oferece um ambiente
+                                tranquilo e sofisticado para você e sua família desfrutarem.
                             </Card.Text>
                             <Link href={'/cadastros/form'}>
                                 <Button variant="success">Alugar Unidade</Button>
@@ -52,10 +53,11 @@ const index = () => {
                         style={{ width: '16rem' }}>
                         <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
                         <Card.Body>
-                            <Card.Title>Condomínio</Card.Title>
+                            <Card.Title>Condomínio Riviera Dei Fiori</Card.Title>
                             <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
+                                Descubra um estilo de vida único e luxuoso no condomínio Riviera dei Fiori.
+                                Localizado em uma das áreas mais deslumbrantes e desejadas de Águas Claras,
+                                esse paraíso tropical oferece um refúgio exclusivo para você e sua família.
                             </Card.Text>
                             <Link href={'/cadastros/form'}>
                                 <Button variant="success">Alugar Unidade</Button>
