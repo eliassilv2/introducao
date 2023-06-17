@@ -1,85 +1,88 @@
 import Pagina from '@/components/Pagina'
+import Link from 'next/link'
 import React from 'react'
-import { Col, Row } from 'react-bootstrap'
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import { Button, Card, Col, Row } from 'react-bootstrap'
 
 const index = () => {
     return (
         <Pagina>
-            <Row md={3}>
+            <Row md={4}>
                 <Col>
-                    <Card >
-                        <CardMedia
-                            component="img"
-                            height="250"
-                            image='../images/alphaville.jpg'
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Alphaville
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
+                    <Card
+                        border='success'
+                        style={{ width: '16rem' }}>
+                        <Card.Img
+                            variant="top"
+                            src='images/alphaville.jpg' />
+                        <Card.Body>
+                            <Card.Title>Condomínio Alphaville</Card.Title>
+                            <Card.Text>
                                 Ocupando uma área de mais de 20 milhões de metros quadrados de pura qualidade de vida, a região foi escolhida e
                                 cuidadosamente pensada para abrigar um projeto urbano sofisticado e totalmente voltado para o bem estar,
                                 conveniência, segurança e lazer de seus moradores.
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button >Alugar</Button>
-                        </CardActions>
+                            </Card.Text>
+                            <Link href={'/cadastros/form'}>
+                                <Button variant="success">Alugar Unidade</Button>
+                            </Link>
+                        </Card.Body>
+                    </Card>
+                </Col>
+
+
+                <Col>
+                    <Card
+                        border='success'
+                        style={{ width: '16rem' }}>
+                        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+                        <Card.Body>
+                            <Card.Title>Condomínio Living Park Sul</Card.Title>
+                            <Card.Text>
+                                O Condomínio Living Superquadra Park Sul é equipado
+                                com diversas instalações, como piscina.
+                            </Card.Text>
+                            <Link href={'/cadastros/form'}>
+                                <Button variant="success">Alugar Unidade</Button>
+                            </Link>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col>
+                    <Card
+                        border='success'
+                        style={{ width: '16rem' }}>
+                        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+                        <Card.Body>
+                            <Card.Title>Condomínio</Card.Title>
+                            <Card.Text>
+                                Some quick example text to build on the card title and make up the
+                                bulk of the card's content.
+                            </Card.Text>
+                            <Link href={'/cadastros/form'}>
+                                <Button variant="success">Alugar Unidade</Button>
+                            </Link>
+                        </Card.Body>
                     </Card>
                 </Col>
 
                 <Col>
-                    <Card sx={{ maxWidth: 345 }}>
-                        <CardMedia
-                            component="img"
-                            height="250"
-                            image=""
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Living Park Sul
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                Lizards are a widespread group of squamate reptiles, with over 6,000
-                                species, ranging across all continents except Antarctica
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button >Alugar</Button>
-                        </CardActions>
+                    <Card
+                        border='success'
+                        style={{ width: '16rem' }}>
+                        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+                        <Card.Body>
+                            <Card.Title>Condomínio</Card.Title>
+                            <Card.Text>
+                                Some quick example text to build on the card title and make up the
+                                bulk of the card's content.
+                            </Card.Text>
+                            <Link href={'/cadastros/form'}>
+                                <Button variant="success">Alugar Unidade</Button>
+                            </Link>
+                        </Card.Body>
                     </Card>
                 </Col>
-
-                <Col>
-                    <Card sx={{ maxWidth: 345 }}>
-                        <CardMedia
-                            component="img"
-                            height="250"
-                            image="/static/images/cards/contemplative-reptile.jpg"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Lizard
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                Lizards are a widespread group of squamate reptiles, with over 6,000
-                                species, ranging across all continents except Antarctica
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button>Alugar</Button>
-                        </CardActions>
-                    </Card>
-                </Col>
-
             </Row>
+
         </Pagina>
     )
 }
