@@ -2,9 +2,9 @@ import Pagina from '@/components/Pagina'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
-import { AiOutlinePlus } from 'react-icons/ai'
+import { AiOutlinePlus, AiOutlinePlusCircle } from 'react-icons/ai'
 import { FaUserEdit } from 'react-icons/fa'
-import { TbTrashFilled } from 'react-icons/tb'
+import { TbArrowBack, TbTrashFilled } from 'react-icons/tb'
 
 const index = () => {
 
@@ -30,10 +30,6 @@ const index = () => {
     return (
         <Pagina titulo='Clientes Cadastrados'>
 
-            <Link href="/cadastros/form" className='mb-2 btn btn-primary'>
-                <AiOutlinePlus className='me-1' />
-                Novo
-            </Link>
             <div>
                 <Table responsive='sm' striped bordered hover >
                     <thead>
@@ -66,6 +62,16 @@ const index = () => {
                         ))}
                     </tbody>
                 </Table>
+                <div className='text-start'>
+                    <Link href="/cadastros/form" className=' btn btn-info'>
+                        <AiOutlinePlusCircle className='me-1' />
+                        Novo Condomínio
+                    </Link>
+                    <Link className='ms-2 btn btn-danger' href={'/page1'}>
+                        <TbArrowBack className='me-2' />
+                        Voltar
+                    </Link>
+                </div>
             </div>
         </Pagina>
     );

@@ -9,10 +9,10 @@ const Cabecalho = () => {
         <Container>
           <Navbar.Brand href="../login">Condomínios</Navbar.Brand>
           <Nav className="text-center">
-              <Nav.Link href="../condominios">Condomínios</Nav.Link>
-              <Nav.Link href="../">Unidades</Nav.Link>
+              <Nav.Link href="../page1">Inicio</Nav.Link>
+              <Nav.Link href="../">Condomínios</Nav.Link>
               <Nav.Link href="../">Moradores</Nav.Link>
-              <Nav.Link href="../">Regiões</Nav.Link>
+              <Nav.Link href="../condominios/form">Novo Condomínio</Nav.Link>
               <Nav.Link href="/"></Nav.Link>
           </Nav>
         </Container>

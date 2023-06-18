@@ -16,7 +16,7 @@ const cadastroValidator = {
         required: 'Selecione a Unidade',
         minLength: {
             value: 7,
-            message: 'O Minimo é 6'
+            message: 'Coloque o Bloco'
         },
         maxLength: {
             value: 7,

@@ -1,92 +1,127 @@
 import Pagina from '@/components/Pagina'
 import Link from 'next/link'
-import React from 'react'
-import { Button, Card, Col, Row } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react'
+import { Button, Table } from 'react-bootstrap'
+import { AiOutlinePlusCircle } from 'react-icons/ai'
+import { FaUserEdit } from 'react-icons/fa'
+import { TbArrowBack, TbTrashFilled } from 'react-icons/tb'
 
 const index = () => {
+
+    const [condominios, setCondominios] = useState([])
+
+    useEffect(() => {
+        setCondominios(getAll())
+    }, [])
+
+    function getAll() {
+        return JSON.parse(window.localStorage.getItem('condominios')) || []
+    }
+
+    function excluir(id) {
+        if (confirm('Deseja realmente excluir o registro? ')) {
+            const itens = getAll()
+            itens.splice(id, 1)
+            window.localStorage.setItem('condominios', JSON.stringify(itens))
+            setCondominios(itens)
+        }
+    }
+
+
     return (
-        <Pagina>
-            <Row md={4}>
-                <Col>
-                    <Card
-                        border='success'
-                        style={{ width: '16rem' }}>
-                        <Card.Img
-                            variant="top"
-                            src='images/alphaville.jpg' />
-                        <Card.Body>
-                            <Card.Title>Condomínio Alphaville</Card.Title>
-                            <Card.Text>
-                                Ocupando uma área de mais de 20 milhões de metros quadrados de pura qualidade de vida, a região foi escolhida e
-                                cuidadosamente pensada para abrigar um projeto urbano sofisticado e totalmente voltado para o bem estar,
-                                conveniência, segurança e lazer de seus moradores.
-                            </Card.Text>
-                            <Link href={'/cadastros/form'}>
-                                <Button variant="success">Alugar Unidade</Button>
-                            </Link>
-                        </Card.Body>
-                    </Card>
-                </Col>
+        <Pagina titulo='Condomínios Cadastrados'>
 
+            <div>
+                <Table responsive='sm' striped bordered hover >
+                    <thead>
+                        <tr>
+                            <th>Alterar</th>
+                            <th>Nome Fantasia do Condomínio</th>
+                            <th>CNPJ</th>
+                            <th>Endereço</th>
+                            <th>CEP</th>
+                            <th>Qnt. de Blocos</th>
+                            <th>Nome do Síndico</th>
+                        </tr>
+                    </thead>
 
-                <Col>
-                    <Card
-                        border='success'
-                        style={{ width: '16rem' }}>
-                        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-                        <Card.Body>
-                            <Card.Title>Condomínio Living Park Sul</Card.Title>
-                            <Card.Text>
-                                Descubra o Living Park Sul, um condomínio exclusivo e moderno localizado na vibrante cidade de Brasília.
-                                Combinando estilo de vida contemporâneo e conforto excepcional, o Living Park Sul oferece um ambiente
-                                tranquilo e sofisticado para você e sua família desfrutarem.
-                            </Card.Text>
-                            <Link href={'/cadastros/form'}>
-                                <Button variant="success">Alugar Unidade</Button>
-                            </Link>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col>
-                    <Card
-                        border='success'
-                        style={{ width: '16rem' }}>
-                        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-                        <Card.Body>
-                            <Card.Title>Condomínio Riviera Dei Fiori</Card.Title>
-                            <Card.Text>
-                                Descubra um estilo de vida único e luxuoso no condomínio Riviera dei Fiori.
-                                Localizado em uma das áreas mais deslumbrantes e desejadas de Águas Claras,
-                                esse paraíso tropical oferece um refúgio exclusivo para você e sua família.
-                            </Card.Text>
-                            <Link href={'/cadastros/form'}>
-                                <Button variant="success">Alugar Unidade</Button>
-                            </Link>
-                        </Card.Body>
-                    </Card>
-                </Col>
+                    <tbody>
+                        {condominios.map((item, i) => (
+                            <tr key={i}>
+                                <td>
+                                    <Link href={'/condominios/' + i}>
+                                        <FaUserEdit title='Alterar' className='text-info' />
+                                    </Link>
+                                    {' '}
+                                    <TbTrashFilled title='Excluir' onClick={() => excluir(i)} className='text-dark' />
+                                </td>
+                                <td>{item.nome_fantasia}</td>
+                                <td>{item.cnpj}</td>
+                                <td>{item.endereco}</td>
+                                <td>{item.cep}</td>
+                                <td>{item.blocos}</td>
+                                <td>{item.nome_sindico}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
 
-                <Col>
-                    <Card
-                        border='success'
-                        style={{ width: '16rem' }}>
-                        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-                        <Card.Body>
-                            <Card.Title>Condomínio</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                            <Link href={'/cadastros/form'}>
-                                <Button variant="success">Alugar Unidade</Button>
-                            </Link>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
+                <div className='text-start mb-3'>
+                    <Link href="/condominios/form" className=' btn btn-info'>
+                        <AiOutlinePlusCircle className='me-1' />
+                        Novo Condomínio
+                    </Link>
+                    <Link className='ms-2 btn btn-danger' href={'/page1'}>
+                        <TbArrowBack className='me-2' />
+                        Voltar
+                    </Link>
+                </div>
 
+                <Table className='table-success' responsive='sm' striped bordered  >
+                    <thead>
+                        <tr>
+                            <th>Nome Fantasia do Condomínio</th>
+                            <th>CNPJ</th>
+                            <th>Endereço</th>
+                            <th>CEP</th>
+                            <th>Qnt. de Blocos</th>
+                            <th>Nome do Síndico</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                            <tr>
+                                <td>Residencial Alphaville</td>
+                                <td>12.456.789/0001-44</td>
+                                <td>Rua 10 Chácara 177, Set Hab Vicente Pires</td>
+                                <td>71680-123</td>
+                                <td>6 Blocos</td>
+                                <td>Eustácio Oliveira</td>
+                            </tr>    
+
+                            <tr>
+                                <td>Condomínio Living Park Sul</td>
+                                <td>23.400.218/0001-22</td>
+                                <td>SMAS Trecho 1 Superquadra Park Sul SQPS, Zona Industrial - Guará, Brasília - DF</td>
+                                <td>71680-389</td>
+                                <td>4 Blocos</td>
+                                <td>Eustácio Oliveira</td>
+                            </tr>
+
+                            <tr>
+                                <td>Riviera Dei Fiori</td>
+                                <td>54.534.234/0001-75</td>
+                                <td>Alameda das Acácias, Praça do Tucano, s/n, Brasília - DF</td>
+                                <td>71442-459</td>
+                                <td>4 Blocos</td>
+                                <td>Vanessa Lima</td>
+                            </tr>            
+                    </tbody>
+                </Table>            
+
+            </div>
         </Pagina>
-    )
+    );
 }
 
 export default index

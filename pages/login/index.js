@@ -25,7 +25,7 @@ const index = () => {
             <Button
               variant="success"
               type="submit"
-              href='../condominios'>
+              href='../page1'>
               Entrar
             </Button>
           </div>
