@@ -13,7 +13,7 @@ const index = () => {
                         style={{ width: '16rem' }}>
                         <Card.Img
                             variant="top"
-                            src='images/alphaville.jpg' />
+                            src='/images/alphaville.jpg' />
                         <Card.Body>
                             <Card.Title>Condomínio Alphaville</Card.Title>
                             <Card.Text>
