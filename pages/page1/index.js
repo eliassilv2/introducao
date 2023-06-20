@@ -82,6 +82,7 @@ const index = () => {
                             </Link>
                         </Card.Body>
                     </Card>
+
                 </Col>
             </Row>
 
