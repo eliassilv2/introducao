@@ -1,5 +1,6 @@
 import Pagina from '@/components/Pagina'
 import cadastroValidator from '@/validators/cadastroValidator'
+import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -15,9 +16,7 @@ const form = () => {
     const { register, handleSubmit, setValue, formState: { errors } } = useForm()
 
     function salvar(dados) {
-        const condominios = JSON.parse(window.localStorage.getItem('condominios')) || []
-        condominios.push(dados)
-        window.localStorage.setItem('condominios', JSON.stringify(condominios))
+        axios.post('/api/condominios', dados)
         push('/condominios')
     }
 

@@ -1,4 +1,5 @@
 import Pagina from '@/components/Pagina'
+import axios from 'axios'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Button, Table } from 'react-bootstrap'
@@ -11,19 +12,19 @@ const index = () => {
     const [condominios, setCondominios] = useState([])
 
     useEffect(() => {
-        setCondominios(getAll())
+        getAll()
     }, [])
 
     function getAll() {
-        return JSON.parse(window.localStorage.getItem('condominios')) || []
+        axios.get('/api/condominios').then(resultado => {
+            setCondominios(resultado.data);
+        })
     }
 
     function excluir(id) {
-        if (confirm('Deseja realmente excluir o registro? ')) {
-            const itens = getAll()
-            itens.splice(id, 1)
-            window.localStorage.setItem('condominios', JSON.stringify(itens))
-            setCondominios(itens)
+        if (confirm('Deseja realmente excluir o registro?')) {
+            axios.delete('/api/condominios/' + id)
+            getAll()
         }
     }
 
@@ -46,14 +47,14 @@ const index = () => {
                     </thead>
 
                     <tbody>
-                        {condominios.map((item, i) => (
-                            <tr key={i}>
+                        {condominios.map(item => (
+                            <tr key={item.id}>
                                 <td>
-                                    <Link href={'/condominios/' + i}>
+                                    <Link href={'/condominios/' + item.id}> 
                                         <FaUserEdit title='Alterar' className='text-info' />
                                     </Link>
                                     {' '}
-                                    <TbTrashFilled title='Excluir' onClick={() => excluir(i)} className='text-dark' />
+                                    <TbTrashFilled title='Excluir' onClick={() => excluir(item.id)} className='text-dark' />
                                 </td>
                                 <td>{item.nome_fantasia}</td>
                                 <td>{item.cnpj}</td>

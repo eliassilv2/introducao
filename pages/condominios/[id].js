@@ -1,4 +1,5 @@
 import Pagina from '@/components/Pagina'
+import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
@@ -10,25 +11,22 @@ import { TbArrowBack } from 'react-icons/tb'
 const form = () => {
 
     const { push, query } = useRouter()
-    const { condominio, setCondominio } = useState({})
     const { register, handleSubmit, setValue } = useForm()
 
     useEffect(() => {
-
         if (query.id) {
-            const condominios = JSON.parse(window.localStorage.getItem('condominios'))
-            const condominio = condominios[query.id]
+            axios.get('/api/condominios/' + query.id).then(resultado => {
+                const condominio = resultado.data
 
-            for (let atributo in condominio) {
-                setValue(atributo, condominio[atributo])
-            }
+                for (let atributo in condominio) {
+                    setValue(atributo, condominio[atributo])
+                }
+            })
         }
     }, [query.id])
 
     function salvar(dados) {
-        const condominios = JSON.parse(window.localStorage.getItem('condominios')) || []
-        condominios.push(dados)
-        window.localStorage.setItem('condominios', JSON.stringify(condominios))
+        axios.put('/api/condominios/' + query.id, dados)
         push('/condominios')
     }
 
