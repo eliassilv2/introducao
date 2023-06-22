@@ -1,4 +1,5 @@
 import Pagina from '@/components/Pagina'
+import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
@@ -10,25 +11,22 @@ import { TbArrowBack } from 'react-icons/tb'
 const form = () => {
 
     const { push, query } = useRouter()
-    const { cadastro, setCadastro } = useState({})
     const { register, handleSubmit, setValue } = useForm()
 
     useEffect(() => {
-
         if (query.id) {
-            const cadastros = JSON.parse(window.localStorage.getItem('cadastros'))
-            const cadastro = cadastros[query.id]
+            axios.get('/api/cadastros/' + query.id).then(resultado => {
+                const cadastro = resultado.data
 
-            for (let atributo in cadastro) {
-                setValue(atributo, cadastro[atributo])
-            }
+                for (let atributo in cadastro) {
+                    setValue(atributo, cadastro[atributo])
+                }
+            })
         }
     }, [query.id])
 
     function salvar(dados) {
-        const cadastros = JSON.parse(window.localStorage.getItem('cadastros')) || []
-        cadastros.push(dados)
-        window.localStorage.setItem('cadastros', JSON.stringify(cadastros))
+        axios.put('/api/cadastros/' + query.id, dados)
         push('/cadastros')
     }
 

@@ -1,4 +1,5 @@
 import Pagina from '@/components/Pagina'
+import { CardActions, CardContent, CardMedia, Typography } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
 import { Button, Card, Col, Row } from 'react-bootstrap'
@@ -8,81 +9,103 @@ const index = () => {
         <Pagina>
             <Row md={4}>
                 <Col>
-                    <Card
-                        border='success'
-                        style={{ width: '16rem' }}>
-                        <Card.Img
-                            variant="top"
-                            src='/images/alphaville.jpg' />
-                        <Card.Body>
-                            <Card.Title>Condomínio Alphaville</Card.Title>
-                            <Card.Text>
+                    <Card sx={{ maxWidth: 345 }}>
+                        <CardMedia
+                            sx={{ height: 140 }}
+                            image="/images/alphaville.jpg"
+                            title="green iguana"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                Residencial Alphaville
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
                                 Ocupando uma área de mais de 20 milhões de metros quadrados de pura qualidade de vida, a região foi escolhida e
                                 cuidadosamente pensada para abrigar um projeto urbano sofisticado e totalmente voltado para o bem estar,
                                 conveniência, segurança e lazer de seus moradores.
-                            </Card.Text>
+                            </Typography>
+                        </CardContent>
+                        <CardActions>
                             <Link href={'/cadastros/form'}>
-                                <Button variant="success">Alugar Unidade</Button>
+                                <Button variant='success' size="small">Alugar Unidade</Button>
                             </Link>
-                        </Card.Body>
+                        </CardActions>
                     </Card>
                 </Col>
 
 
                 <Col>
-                    <Card
-                        border='success'
-                        style={{ width: '16rem' }}>
-                        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-                        <Card.Body>
-                            <Card.Title>Condomínio Living Park Sul</Card.Title>
-                            <Card.Text>
+                    <Card sx={{ maxWidth: 345 }}>
+                        <CardMedia
+                            sx={{ height: 140 }}
+                            image="/images/living.jpg"
+                            title="green iguana"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                Condomínio Living Park Sul
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
                                 Descubra o Living Park Sul, um condomínio exclusivo e moderno localizado na vibrante cidade de Brasília.
                                 Combinando estilo de vida contemporâneo e conforto excepcional, o Living Park Sul oferece um ambiente
                                 tranquilo e sofisticado para você e sua família desfrutarem.
-                            </Card.Text>
+                            </Typography>
+                        </CardContent>
+                        <CardActions>
                             <Link href={'/cadastros/form'}>
-                                <Button variant="success">Alugar Unidade</Button>
+                                <Button variant='success' size="small">Alugar Unidade</Button>
                             </Link>
-                        </Card.Body>
+                        </CardActions>
                     </Card>
                 </Col>
                 <Col>
-                    <Card
-                        border='success'
-                        style={{ width: '16rem' }}>
-                        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-                        <Card.Body>
-                            <Card.Title>Condomínio Riviera Dei Fiori</Card.Title>
-                            <Card.Text>
+                    <Card sx={{ maxWidth: 345 }}>
+                        <CardMedia
+                            sx={{ height: 140 }}
+                            image="/images/riviera.jpg"
+                            title="green iguana"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                Condomínio Riviera Dei Fiori
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
                                 Descubra um estilo de vida único e luxuoso no condomínio Riviera dei Fiori.
                                 Localizado em uma das áreas mais deslumbrantes e desejadas de Águas Claras,
                                 esse paraíso tropical oferece um refúgio exclusivo para você e sua família.
-                            </Card.Text>
+                            </Typography>
+                        </CardContent>
+                        <CardActions>
                             <Link href={'/cadastros/form'}>
-                                <Button variant="success">Alugar Unidade</Button>
+                                <Button variant='success' size="small">Alugar Unidade</Button>
                             </Link>
-                        </Card.Body>
+                        </CardActions>
                     </Card>
                 </Col>
 
                 <Col>
-                    <Card
-                        border='success'
-                        style={{ width: '16rem' }}>
-                        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-                        <Card.Body>
-                            <Card.Title>Condomínio</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
+                <Card sx={{ maxWidth: 345 }}>
+                        <CardMedia
+                            sx={{ height: 140 }}
+                            image="/images/alphaville.jpg"
+                            title="green iguana"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                Condomínio Riviera Dei Fiori
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                Descubra um estilo de vida único e luxuoso no condomínio Riviera dei Fiori.
+                                Localizado em uma das áreas mais deslumbrantes e desejadas de Águas Claras,
+                                esse paraíso tropical oferece um refúgio exclusivo para você e sua família.
+                            </Typography>
+                        </CardContent>
+                        <CardActions>
                             <Link href={'/cadastros/form'}>
-                                <Button variant="success">Alugar Unidade</Button>
+                                <Button variant='success' size="small">Alugar Unidade</Button>
                             </Link>
-                        </Card.Body>
+                        </CardActions>
                     </Card>
-
                 </Col>
             </Row>
 

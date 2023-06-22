@@ -1,4 +1,5 @@
 import Pagina from '@/components/Pagina'
+import axios from 'axios'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
@@ -11,19 +12,19 @@ const index = () => {
     const [cadastros, setCadastros] = useState([])
 
     useEffect(() => {
-        setCadastros(getAll())
+        getAll()
     }, [])
 
     function getAll() {
-        return JSON.parse(window.localStorage.getItem('cadastros')) || []
+        axios.get('/api/cadastros').then(resultado => {
+            setCadastros(resultado.data);
+        })
     }
 
     function excluir(id) {
-        if (confirm('Deseja realmente excluir o registro? ')) {
-            const itens = getAll()
-            itens.splice(id, 1)
-            window.localStorage.setItem('cadastros', JSON.stringify(itens))
-            setCadastros(itens)
+        if (confirm('Deseja realmente excluir o registro?')) {
+            axios.delete('/api/cadastros/' + id)
+            getAll()
         }
     }
 
@@ -44,14 +45,14 @@ const index = () => {
                     </thead> 
 
                     <tbody>
-                        {cadastros.map((item, i) => (
-                            <tr key={i}>
+                        {cadastros.map(item => (
+                            <tr key={item.id}>
                                 <td>
-                                    <Link href={'/cadastros/' + i}>
+                                    <Link href={'/cadastros/' + item.id}>
                                         <FaUserEdit title='Alterar' className='text-info' />
                                     </Link>
                                     {' '}
-                                    <TbTrashFilled title='Excluir' onClick={() => excluir(i)} className='text-dark' />
+                                    <TbTrashFilled title='Excluir' onClick={() => excluir(item.id)} className='text-dark' />
                                 </td>
                                 <td>{item.nome}</td>
                                 <td>{item.cpf}</td>
