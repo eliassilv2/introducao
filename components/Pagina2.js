@@ -7,14 +7,11 @@ const Pagina2 = (props) => {
 
     return (
         <>
-        <Cabecalho2 />
-            <div className='bg-success text-black py-3 text-center mb-3'>
-                <h1>Cadastre-se</h1>
+            <Cabecalho2 />
+            <div className='bg-success text-black py-2 text-center '>
+                <h1>Entrar</h1>
             </div>
-            
-            <Container className='mb-5'>
-                {props.children}
-            </Container>
+            {props.children}
         </>
     )
 }

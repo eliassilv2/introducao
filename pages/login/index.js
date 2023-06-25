@@ -6,7 +6,7 @@ import { Button, Container, Form } from 'react-bootstrap'
 const index = () => {
 
   return (
-    <Pagina2>
+    <Pagina2 titulo='Entrar'>
       <div style={{
         backgroundImage: 'url(images/condominio.jpg)',
         backgroundSize: 'cover'
@@ -36,7 +36,7 @@ const index = () => {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="cadastro">
-              <Link href={'/form'}>
+              <Link href={'login1/form'}>
                 Cadastre-me
               </Link>
             </Form.Group>
