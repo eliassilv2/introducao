@@ -8,7 +8,7 @@ const Pagina2 = (props) => {
     return (
         <>
         <Cabecalho2 />
-            <div className='bg-primary text-black py-3 text-center mb-3'>
+            <div className='bg-success text-black py-3 text-center mb-3'>
                 <h1>Cadastre-se</h1>
             </div>
             
