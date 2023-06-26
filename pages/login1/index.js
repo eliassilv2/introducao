@@ -30,7 +30,7 @@ const index = () => {
 
 
   return (
-    <Pagina titulo='Condomínios Cadastrados'>
+    <Pagina titulo='Usuários Cadastrados'>
 
       <div>
         <Table responsive='sm' striped bordered hover >
@@ -64,7 +64,7 @@ const index = () => {
             <AiOutlinePlusCircle className='me-1' />
             Novo Condomínio
           </Link>
-          
+
           <Link className='ms-2 btn btn-danger' href={'/page1'}>
             <TbArrowBack className='me-2' />
             Voltar
