@@ -9,24 +9,24 @@ import { TbArrowBack, TbTrashFilled } from 'react-icons/tb'
 
 const index = () => {
 
-  const [login1, setLogins] = useState([])
+  const [login1, setLogin1] = useState([])
 
-  useEffect(() => {
-    getAll()
-  }, [])
+    useEffect(() => {
+        setLogin1(getAll())
+    }, [])
 
-  function getAll() {
-    axios.get('/api/login1').then(resultado => {
-      setLogins(resultado.data);
-    })
-  }
-
-  function excluir(id) {
-    if (confirm('Deseja realmente excluir o registro?')) {
-      axios.delete('/api/login1/' + id)
-      getAll()
+    function getAll() {
+        return JSON.parse(window.localStorage.getItem('login1')) || []
     }
-  }
+
+    function excluir(id) {
+        if (confirm('Deseja realmente excluir o registro? ')) {
+            const itens = getAll()
+            itens.splice(id, 1)
+            window.localStorage.setItem('login1', JSON.stringify(itens))
+            setLogin1(itens)
+        }
+    }
 
 
   return (
@@ -62,7 +62,7 @@ const index = () => {
         <div className='text-start mb-3'>
           <Link href="/login1/form" className=' btn btn-info'>
             <AiOutlinePlusCircle className='me-1' />
-            Novo Condomínio
+            Novo Usuário
           </Link>
 
           <Link className='ms-2 btn btn-danger' href={'/page1'}>
@@ -70,33 +70,6 @@ const index = () => {
             Voltar
           </Link>
         </div>
-
-        <Table className='table-success' responsive='sm' striped bordered  >
-          <thead>
-            <tr>
-              <th>Emails</th>
-              <th>Senhas</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>Residencial Alphaville</td>
-              <td>12.456.789/0001-44</td>
-            </tr>
-
-            <tr>
-              <td>Condomínio Living Park Sul</td>
-              <td>23.400.218/0001-22</td>
-            </tr>
-
-            <tr>
-              <td>Riviera Dei Fiori</td>
-              <td>54.534.234/0001-75</td>
-            </tr>
-          </tbody>
-        </Table>
-
       </div>
     </Pagina>
   );

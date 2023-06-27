@@ -14,7 +14,7 @@ const Cabecalho = () => {
               <Nav.Link href="../cadastros">Moradores</Nav.Link>
               <Nav.Link href="../condominios/form">Novo Condomínio</Nav.Link>
               <Nav.Link href="../login1">Usuários</Nav.Link>
-              <Nav.Link href="../">Avalie-nos</Nav.Link>
+              <Nav.Link href="../feedbacks">Avalie-nos</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

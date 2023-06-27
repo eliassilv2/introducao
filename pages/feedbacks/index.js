@@ -32,7 +32,7 @@ const index = () => {
 
             <Link href="/feedbacks/form" className='mb-2 btn btn-primary'>
                 <AiOutlinePlus className='me-1' />
-                Novo
+                Novo Feedback 
             </Link>
             <Table striped bordered hover >
                 <thead>

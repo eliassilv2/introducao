@@ -66,7 +66,7 @@ const index = () => {
                 <div className='text-start'>
                     <Link href="/cadastros/form" className=' btn btn-info'>
                         <AiOutlinePlusCircle className='me-1' />
-                        Novo Condomínio
+                        Novo Cadastro
                     </Link>
                     <Link className='ms-2 btn btn-danger' href={'/page1'}>
                         <TbArrowBack className='me-2' />
