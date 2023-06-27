@@ -11,22 +11,25 @@ import { TbArrowBack } from 'react-icons/tb'
 const form = () => {
 
     const { push, query } = useRouter()
+    const [login, setLogin] = useState({})
     const { register, handleSubmit, setValue } = useForm()
 
     useEffect(() => {
-        if (query.id) {
-            axios.get('/api/login1/' + query.id).then(resultado => {
-                const login = resultado.data
 
-                for (let atributo in login) {
-                    setValue(atributo, login[atributo])
-                }
-            })
+        if (query.id) {
+            const login1 = JSON.parse(window.localStorage.getItem('login1'))
+            const login = login1[query.id]
+
+            for(let atributo in login){
+                setValue(atributo, login[atributo])
+            }
         }
     }, [query.id])
 
     function salvar(dados) {
-        axios.put('/api/login1/' + query.id, dados)
+        const login1 = JSON.parse(window.localStorage.getItem('login1')) || []
+        login1.push(dados)
+        window.localStorage.setItem('login1', JSON.stringify(login1))
         push('/login1')
     }
 

@@ -12,19 +12,19 @@ const index = () => {
     const [cadastros, setCadastros] = useState([])
 
     useEffect(() => {
-        getAll()
+        setCadastros(getAll())
     }, [])
 
     function getAll() {
-        axios.get('/api/cadastros').then(resultado => {
-            setCadastros(resultado.data);
-        })
+        return JSON.parse(window.localStorage.getItem('cadastros')) || []
     }
 
     function excluir(id) {
-        if (confirm('Deseja realmente excluir o registro?')) {
-            axios.delete('/api/cadastros/' + id)
-            getAll()
+        if (confirm('Deseja realmente excluir o registro? ')) {
+            const itens = getAll()
+            itens.splice(id, 1)
+            window.localStorage.setItem('cadastros', JSON.stringify(itens))
+            setCadastros(itens)
         }
     }
 
@@ -45,14 +45,14 @@ const index = () => {
                     </thead> 
 
                     <tbody>
-                        {cadastros.map(item => (
-                            <tr key={item.id}>
+                        {cadastros.map((item, i) => (
+                            <tr key={i}>
                                 <td>
-                                    <Link href={'/cadastros/' + item.id}>
+                                    <Link href={'/cadastros/' +i}>
                                         <FaUserEdit title='Alterar' className='text-info' />
                                     </Link>
                                     {' '}
-                                    <TbTrashFilled title='Excluir' onClick={() => excluir(item.id)} className='text-dark' />
+                                    <TbTrashFilled title='Excluir' onClick={() => excluir(i)} className='text-dark' />
                                 </td>
                                 <td>{item.nome}</td>
                                 <td>{item.cpf}</td>

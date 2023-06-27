@@ -12,19 +12,19 @@ const index = () => {
     const [condominios, setCondominios] = useState([])
 
     useEffect(() => {
-        getAll()
+        setCondominios(getAll())
     }, [])
 
     function getAll() {
-        axios.get('/api/condominios').then(resultado => {
-            setCondominios(resultado.data);
-        })
+        return JSON.parse(window.localStorage.getItem('condominios')) || []
     }
 
     function excluir(id) {
-        if (confirm('Deseja realmente excluir o registro?')) {
-            axios.delete('/api/condominios/' + id)
-            getAll()
+        if (confirm('Deseja realmente excluir o registro? ')) {
+            const itens = getAll()
+            itens.splice(id, 1)
+            window.localStorage.setItem('condominios', JSON.stringify(itens))
+            setCondominios(itens)
         }
     }
 
@@ -47,14 +47,14 @@ const index = () => {
                     </thead>
 
                     <tbody>
-                        {condominios.map(item => (
-                            <tr key={item.id}>
+                        {condominios.map((item, i) => (
+                            <tr key={i}>
                                 <td>
-                                    <Link href={'/condominios/' + item.id}> 
+                                    <Link href={'/condominios/' + i}> 
                                         <FaUserEdit title='Alterar' className='text-info' />
                                     </Link>
                                     {' '}
-                                    <TbTrashFilled title='Excluir' onClick={() => excluir(item.id)} className='text-dark' />
+                                    <TbTrashFilled title='Excluir' onClick={() => excluir(i)} className='text-dark' />
                                 </td>
                                 <td>{item.nome_fantasia}</td>
                                 <td>{item.cnpj}</td>

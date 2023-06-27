@@ -1,6 +1,5 @@
 import Pagina from '@/components/Pagina'
 import { Rate } from 'antd'
-import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -12,21 +11,14 @@ import { TbArrowBack } from 'react-icons/tb'
 const form = () => {
 
     const { push } = useRouter()
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm()
 
     function salvar(dados) {
-        axios.post('', dados)
-        push('/')
+        const feedbacks = JSON.parse(window.localStorage.getItem('feedbacks')) || []
+        feedbacks.push(dados)
+        window.localStorage.setItem('feedbacks', JSON.stringify(feedbacks))
+        push('/feedbacks')
     }
-
-    function handleChange(event) {
-        const name = event.target.name
-        const valor = event.target.value
-        const mascara = event.target.getAttribute('mask')
-
-        setValue(name, mask(valor, mascara));
-    }
-
 
     return (
         <Pagina titulo='Feedback'>

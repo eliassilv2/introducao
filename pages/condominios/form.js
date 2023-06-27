@@ -1,6 +1,5 @@
 import Pagina from '@/components/Pagina'
 import cadastroValidator from '@/validators/cadastroValidator'
-import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -13,19 +12,13 @@ import { mask } from 'remask'
 const form = () => {
 
     const { push } = useRouter()
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm()
 
     function salvar(dados) {
-        axios.post('/api/condominios', dados)
+        const condominios = JSON.parse(window.localStorage.getItem('condominios')) || []
+        condominios.push(dados)
+        window.localStorage.setItem('condominios', JSON.stringify(condominios))
         push('/condominios')
-    }
-
-    function handleChange(event) {
-        const name = event.target.name
-        const valor = event.target.value
-        const mascara = event.target.getAttribute('mask')
-
-        setValue(name, mask(valor, mascara));
     }
 
     return (

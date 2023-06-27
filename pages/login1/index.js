@@ -43,14 +43,14 @@ const index = () => {
           </thead>
 
           <tbody>
-            {login1.map(item => (
-              <tr key={item.id}>
+            {login1.map((item, i) => (
+              <tr key={i}>
                 <td>
-                  <Link href={'/login1/' + item.id}>
+                  <Link href={'/login1/' + i}>
                     <FaUserEdit title='Alterar' className='text-info' />
                   </Link>
                   {' '}
-                  <TbTrashFilled title='Excluir' onClick={() => excluir(item.id)} className='text-dark' />
+                  <TbTrashFilled title='Excluir' onClick={() => excluir(i)} className='text-dark' />
                 </td>
                 <td>{item.email}</td>
                 <td>{item.senha}</td>

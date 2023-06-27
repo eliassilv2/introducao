@@ -11,22 +11,25 @@ import { TbArrowBack } from 'react-icons/tb'
 const form = () => {
 
     const { push, query } = useRouter()
+    const [cadastro, setCadastro] = useState({})
     const { register, handleSubmit, setValue } = useForm()
 
     useEffect(() => {
-        if (query.id) {
-            axios.get('/api/cadastros/' + query.id).then(resultado => {
-                const cadastro = resultado.data
 
-                for (let atributo in cadastro) {
-                    setValue(atributo, cadastro[atributo])
-                }
-            })
+        if (query.id) {
+            const cadastros = JSON.parse(window.localStorage.getItem('cadastros'))
+            const cadastro = cadastros[query.id]
+
+            for(let atributo in cadastro){
+                setValue(atributo, cadastro[atributo])
+            }
         }
     }, [query.id])
 
     function salvar(dados) {
-        axios.put('/api/cadastros/' + query.id, dados)
+        const cadastros = JSON.parse(window.localStorage.getItem('cadastros')) || []
+        cadastros.push(dados)
+        window.localStorage.setItem('cadastros', JSON.stringify(cadastros))
         push('/cadastros')
     }
 

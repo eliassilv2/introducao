@@ -14,7 +14,9 @@ const form = () => {
     const { register, handleSubmit, setValue, formState: { errors } } = useForm()
 
     function salvar(dados) {
-        axios.post('/api/login1', dados)
+        const login1 = JSON.parse(window.localStorage.getItem('login1')) || []
+        login1.push(dados)
+        window.localStorage.setItem('login1', JSON.stringify(login1))
         push('/login1')
     }
 
