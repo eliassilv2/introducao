@@ -7,14 +7,14 @@ const Cabecalho = () => {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="../logins">Condomínios</Navbar.Brand>
+          <Navbar.Brand href="../login">Condomínios</Navbar.Brand>
           <Nav className="text-center">
               <Nav.Link href="../page1">Inicio</Nav.Link>
               <Nav.Link href="../condominios">Condomínios</Nav.Link>
               <Nav.Link href="../cadastros">Moradores</Nav.Link>
               <Nav.Link href="../condominios/form">Novo Condomínio</Nav.Link>
               <Nav.Link href="../login1">Usuários</Nav.Link>
-              <Nav.Link href="../feedbacks">Avalie-nos</Nav.Link>
+              <Nav.Link href="../feedbacks/form">Avalie-nos</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
