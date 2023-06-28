@@ -72,6 +72,13 @@ const form = () => {
                         {...register('nome_sindico')} />
                 </Form.Group>
 
+                <Form.Group className="mb-3" controlId="cpf">
+                    <Form.Label>CPF do Síndico: </Form.Label>
+                    <Form.Control
+                        type="text"
+                        {...register('cpf')} />
+                </Form.Group>
+
                 <div className='text-center'>
                     <Button variant="success" onClick={handleSubmit(salvar)}>
                         <AiOutlineCheck className='me-2' />

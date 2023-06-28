@@ -2,7 +2,7 @@ import Pagina from '@/components/Pagina'
 import axios from 'axios'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { Table } from 'react-bootstrap'
+import { Table } from "@nextui-org/react";
 import { AiOutlinePlus, AiOutlinePlusCircle } from 'react-icons/ai'
 import { FaUserEdit } from 'react-icons/fa'
 import { TbArrowBack, TbTrashFilled } from 'react-icons/tb'
@@ -32,36 +32,39 @@ const index = () => {
         <Pagina titulo='Clientes Cadastrados'>
 
             <div>
-                <Table responsive='sm' striped bordered hover >
-                    <thead>
-                        <tr>
-                            <th>Alterar</th>
-                            <th>Nome Sobrenome</th>
-                            <th>CPF</th>
-                            <th>Unidade Escolhida</th>
-                            <th>Condomínio</th>
-                            <th>Forma de Pagamento</th>
-                        </tr>
-                    </thead> 
-
-                    <tbody>
+                <Table responsive='sm'
+                    aria-label="Example table with static content"
+                    css={{
+                        height: "auto",
+                        minWidth: "100%",
+                    }}
+                >
+                    <Table.Header>
+                        <Table.Column>ALTERAR</Table.Column>
+                        <Table.Column>NAME SOBRENOME</Table.Column>
+                        <Table.Column>CPF</Table.Column>
+                        <Table.Column>UNIDADE ESCOLHIDA</Table.Column>
+                        <Table.Column>CONDOMÍNIO</Table.Column>
+                        <Table.Column>FORMA DE PAGAMENTO</Table.Column>
+                    </Table.Header>
+                    <Table.Body>
                         {cadastros.map((item, i) => (
-                            <tr key={i}>
-                                <td>
-                                    <Link href={'/cadastros/' +i}>
-                                        <FaUserEdit title='Alterar' className='text-info' />
+                            <Table.Row key={i}>
+                                <Table.Cell>
+                                    <Link href={'/cadastros/' + i}>
+                                        <FaUserEdit title='Alterar' className='text-info'/>
+                                        {''}
                                     </Link>
-                                    {' '}
-                                    <TbTrashFilled title='Excluir' onClick={() => excluir(i)} className='text-dark' />
-                                </td>
-                                <td>{item.nome}</td>
-                                <td>{item.cpf}</td>
-                                <td>{item.unidade}</td>
-                                <td>{item.condominio}</td>
-                                <td>{item.pagamento}</td>
-                            </tr>
+                                    <TbTrashFilled title='Excluir' onClick={() => excluir(i)} className='text-dark'/>
+                                </Table.Cell>
+                                <Table.Cell>{item.nome}</Table.Cell>
+                                <Table.Cell>{item.cpf}</Table.Cell>
+                                <Table.Cell>{item.unidade}</Table.Cell>
+                                <Table.Cell>{item.condominio}</Table.Cell>
+                                <Table.Cell>{item.pagamento}</Table.Cell>
+                            </Table.Row>
                         ))}
-                    </tbody>
+                    </Table.Body>
                 </Table>
                 <div className='text-start'>
                     <Link href="/cadastros/form" className=' btn btn-info'>

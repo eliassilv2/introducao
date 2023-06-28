@@ -52,6 +52,13 @@ const form = () => {
                         {...register('senha')} />
                 </Form.Group>
 
+                <Form.Group className="mb-3" controlId="senha">
+                    <Form.Label>Confirme Senha: </Form.Label>
+                    <Form.Control
+                        type='text'
+                        {...register('senha')} />
+                </Form.Group>
+
                 <div className='text-center'>
                     <Button variant="success" onClick={handleSubmit(salvar)}>
                         <AiOutlineCheck className='me-2' />

@@ -1,10 +1,12 @@
 import Pagina from '@/components/Pagina'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { Table } from 'react-bootstrap'
+import { Table } from "@nextui-org/react";
 import { AiOutlinePlus } from 'react-icons/ai'
 import { BsTrash3 } from 'react-icons/bs'
 import { HiOutlinePencilAlt } from 'react-icons/hi'
+import { FaUserEdit } from 'react-icons/fa';
+import { TbTrashFilled } from 'react-icons/tb';
 
 const index = () => {
 
@@ -32,34 +34,33 @@ const index = () => {
 
             <Link href="/feedbacks/form" className='mb-2 btn btn-primary'>
                 <AiOutlinePlus className='me-1' />
-                Novo Feedback 
+                Novo Feedback
             </Link>
             <Table striped bordered hover >
-                <thead>
-                    <tr>
-
-                        <th>Excluir</th>
-                        <th>Email</th>
-                        <th>Nome</th>
-                        <th>Comentário</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {feedbacks.map((item, i) => (
-                        <tr key={i}>
-                            <td>
-                                <Link href={'/feedbacks/' + i}>
-                                    <HiOutlinePencilAlt title='Alterar' className='text-primary' />
-                                </Link>
-                                {' '}
-                                <BsTrash3 title='Excluir' onClick={() => excluir(i)} className='text-warning' />
-                            </td>
-                            <td>{item.email}</td>
-                            <td>{item.nome}</td>
-                            <td>{item.comentario}</td>
-                        </tr>
-                    ))}
-                </tbody>
+                <Table.Header>
+                    <Table.Column>ALTERAR</Table.Column>
+                    <Table.Column>EMAIL</Table.Column>
+                    <Table.Column>NOME</Table.Column>
+                    <Table.Column>COMENTÁRIO</Table.Column>
+                    <Table.Column>AVALIAÇÃO</Table.Column>
+                </Table.Header>
+                <Table.Body>
+                        {feedbacks.map((item, i) => (
+                            <Table.Row key={i}>
+                                <Table.Cell>
+                                    <Link href={'/feedbacks/' + i}>
+                                        <FaUserEdit title='Alterar' className='text-info' />
+                                        {''}
+                                    </Link>
+                                    <TbTrashFilled title='Excluir' onClick={() => excluir(i)} className='text-dark' />
+                                </Table.Cell>
+                                <Table.Cell>{item.email}</Table.Cell>
+                                <Table.Cell>{item.nome}</Table.Cell>
+                                <Table.Cell>{item.comentario}</Table.Cell>
+                                <Table.Cell>{item.avaliacao}</Table.Cell>                               
+                            </Table.Row>
+                        ))}
+                    </Table.Body>
             </Table>
 
         </Pagina>

@@ -30,7 +30,7 @@ const form = () => {
 
 
     return (
-        <Pagina titulo='Cadastro'>
+        <Pagina titulo='Cadastro Login'>
             <Container className="d-flex justify-content-center align-items-top">
                 <Form style={{
                     width: '50rem'
@@ -49,6 +49,18 @@ const form = () => {
 
                     <Form.Group className="mb-3" controlId="senha">
                         <Form.Label>Senha: </Form.Label>
+                        <Form.Control
+                            isInvalid={errors.senha}
+                            type="text"
+                            {...register('senha')} />
+                        {
+                            errors.senha &&
+                            <small className='mt-1'>{errors.senha.message}</small>
+                        }
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="senha">
+                        <Form.Label>Confirme Senha: </Form.Label>
                         <Form.Control
                             isInvalid={errors.senha}
                             type="text"

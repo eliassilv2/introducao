@@ -2,7 +2,7 @@ import Pagina from '@/components/Pagina'
 import axios from 'axios'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { Button, Table } from 'react-bootstrap'
+import { Table } from "@nextui-org/react";
 import { AiOutlinePlusCircle } from 'react-icons/ai'
 import { FaUserEdit } from 'react-icons/fa'
 import { TbArrowBack, TbTrashFilled } from 'react-icons/tb'
@@ -33,38 +33,38 @@ const index = () => {
         <Pagina titulo='Condomínios Cadastrados'>
 
             <div>
-                <Table responsive='sm' striped bordered hover >
-                    <thead>
-                        <tr>
-                            <th>Alterar</th>
-                            <th>Nome Fantasia do Condomínio</th>
-                            <th>CNPJ</th>
-                            <th>Endereço</th>
-                            <th>CEP</th>
-                            <th>Qnt. de Blocos</th>
-                            <th>Nome do Síndico</th>
-                        </tr>
-                    </thead>
+                <Table responsive='sm'>
+                    <Table.Header>
+                        <Table.Column>ALTERAR</Table.Column>
+                        <Table.Column>NOME FANTASIA COND.</Table.Column>
+                        <Table.Column>CNPJ</Table.Column>
+                        <Table.Column>ENDEREÇO</Table.Column>
+                        <Table.Column>CEP</Table.Column>
+                        <Table.Column>QNT. BLOCOS</Table.Column>
+                        <Table.Column>NOME SÍNDICO(A)</Table.Column>
+                        <Table.Column>CPF SÍNDICO</Table.Column>
+                    </Table.Header>
 
-                    <tbody>
+                    <Table.Body>
                         {condominios.map((item, i) => (
-                            <tr key={i}>
-                                <td>
-                                    <Link href={'/condominios/' + i}> 
+                            <Table.Row key={i}>
+                                <Table.Cell>
+                                    <Link href={'/condominios/' + i}>
                                         <FaUserEdit title='Alterar' className='text-info' />
+                                        {''}
                                     </Link>
-                                    {' '}
                                     <TbTrashFilled title='Excluir' onClick={() => excluir(i)} className='text-dark' />
-                                </td>
-                                <td>{item.nome_fantasia}</td>
-                                <td>{item.cnpj}</td>
-                                <td>{item.endereco}</td>
-                                <td>{item.cep}</td>
-                                <td>{item.blocos}</td>
-                                <td>{item.nome_sindico}</td>
-                            </tr>
+                                </Table.Cell>
+                                <Table.Cell>{item.nome_fantasia}</Table.Cell>
+                                <Table.Cell>{item.cnpj}</Table.Cell>
+                                <Table.Cell>{item.endereco}</Table.Cell>
+                                <Table.Cell>{item.cep}</Table.Cell>
+                                <Table.Cell>{item.blocos}</Table.Cell>
+                                <Table.Cell>{item.nome_sindico}</Table.Cell>
+                                <Table.Cell>{item.cpf_sindico}</Table.Cell>
+                            </Table.Row>
                         ))}
-                    </tbody>
+                    </Table.Body>
                 </Table>
 
                 <div className='text-start mb-3'>
@@ -77,48 +77,6 @@ const index = () => {
                         Voltar
                     </Link>
                 </div>
-
-                <Table className='table-success' responsive='sm' striped bordered  >
-                    <thead>
-                        <tr>
-                            <th>Nome Fantasia do Condomínio</th>
-                            <th>CNPJ</th>
-                            <th>Endereço</th>
-                            <th>CEP</th>
-                            <th>Qnt. de Blocos</th>
-                            <th>Nome do Síndico</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                            <tr>
-                                <td>Residencial Alphaville</td>
-                                <td>12.456.789/0001-44</td>
-                                <td>Rua 10 Chácara 177, Set Hab Vicente Pires</td>
-                                <td>71680-123</td>
-                                <td>6 Blocos</td>
-                                <td>Eustácio Oliveira</td>
-                            </tr>    
-
-                            <tr>
-                                <td>Condomínio Living Park Sul</td>
-                                <td>23.400.218/0001-22</td>
-                                <td>SMAS Trecho 1 Superquadra Park Sul SQPS, Zona Industrial - Guará, Brasília - DF</td>
-                                <td>71680-389</td>
-                                <td>4 Blocos</td>
-                                <td>Eustácio Oliveira</td>
-                            </tr>
-
-                            <tr>
-                                <td>Riviera Dei Fiori</td>
-                                <td>54.534.234/0001-75</td>
-                                <td>Alameda das Acácias, Praça do Tucano, s/n, Brasília - DF</td>
-                                <td>71442-459</td>
-                                <td>4 Blocos</td>
-                                <td>Vanessa Lima</td>
-                            </tr>            
-                    </tbody>
-                </Table>            
 
             </div>
         </Pagina>

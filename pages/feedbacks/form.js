@@ -1,4 +1,5 @@
 import Pagina from '@/components/Pagina'
+import feedbackValidator from '@/validators/feedbackValidator'
 import { Rate } from 'antd'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -31,7 +32,8 @@ const form = () => {
                         <Form.Control
                             isInvalid={errors.email}
                             type="text"
-                            {...register('email')} />
+                            {...register('email', feedbackValidator.email)} 
+                            placeholder='Coloque seu Email'/>
                         {
                             errors.email &&
                             <small className='mt-1'>{errors.email.message}</small>
@@ -43,7 +45,8 @@ const form = () => {
                         <Form.Control
                             isInvalid={errors.nome}
                             type="text"
-                            {...register('nome')} />
+                            {...register('nome', feedbackValidator.nome)}
+                            placeholder='Coloque seu Nome'/>
                         {
                             errors.nome &&
                             <small className='mt-1'>{errors.nome.message}</small>
@@ -55,14 +58,18 @@ const form = () => {
                         <Form.Control
                             isInvalid={errors.comentario}
                             type="text"
-                            {...register('comentario')} />
+                            {...register('comentario')} 
+                            placeholder='Opcional'/>
                         {
                             errors.comentario &&
                             <small className='mt-1'>{errors.comentario.message}</small>
                         }
                     </Form.Group>
-                    <p>Avalie-nos</p>
-                    <Rate />
+                    <Form.Group className="mb-3" controlId="avaliacao">
+                        <Form.Label>Avaliação: <Rate /></Form.Label>
+                        
+                    </Form.Group>
+                    
 
                     <div className='text-center'>
                         <Button variant="success" onClick={handleSubmit(salvar)}>
