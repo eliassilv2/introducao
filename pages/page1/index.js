@@ -8,7 +8,7 @@ const index = () => {
     return (
         <Pagina>
             <Row md={4}>
-                <Col>
+                <Col className='mb-3'>
                     <Card sx={{ maxWidth: 345 }}>
                         <CardMedia
                             sx={{ height: 140 }}
@@ -39,7 +39,7 @@ const index = () => {
                         <CardMedia
                             sx={{ height: 140 }}
                             image="/images/living.jpg"
-                            title="green iguana"
+                            title="living"
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
@@ -63,7 +63,7 @@ const index = () => {
                         <CardMedia
                             sx={{ height: 140 }}
                             image="/images/riviera.jpg"
-                            title="green iguana"
+                            title="riviera"
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
@@ -84,20 +84,45 @@ const index = () => {
                 </Col>
 
                 <Col>
-                <Card sx={{ maxWidth: 345 }}>
+                    <Card sx={{ maxWidth: 345 }}>
                         <CardMedia
                             sx={{ height: 140 }}
-                            image="/images/alphaville.jpg"
-                            title="green iguana"
+                            image="/images/laguna.jpg"
+                            title="toplife"
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
-                                Condomínio Riviera Dei Fiori
+                                Condomínio Laguna Top Life
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                                Descubra um estilo de vida único e luxuoso no condomínio Riviera dei Fiori.
-                                Localizado em uma das áreas mais deslumbrantes e desejadas de Águas Claras,
-                                esse paraíso tropical oferece um refúgio exclusivo para você e sua família.
+                                Descubra o Condomínio Top Life, um lugar perfeito para viver com conforto,
+                                segurança e praticidade em Águas Claras-DF. Se você busca um estilo de vida
+                                moderno e com diversas opções de lazer, o Condomínio Top Life é a escolha certa.
+                            </Typography>
+                        </CardContent>
+                        <CardActions>
+                            <Link href={'/cadastros/form'}>
+                                <Button variant='success' size="small">Alugar Unidade</Button>
+                            </Link>
+                        </CardActions>
+                    </Card>
+                </Col>
+                <Col>
+                    <Card sx={{ maxWidth: 345 }}>
+                        <CardMedia
+                            sx={{ height: 140 }}
+                            image="/images/vivace.jpg"
+                            title="vivacetag"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                Condomínio Vivace
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                Estamos felizes em apresentar o Condomínio Vivace,
+                                uma oportunidade única de viver com conforto e qualidade de vida em Taguatinga-DF.
+                                Descubra um lugar onde a segurança, a comodidade e o bem-estar se encontram para proporcionar
+                                uma experiência residencial excepcional.
                             </Typography>
                         </CardContent>
                         <CardActions>

@@ -12,6 +12,14 @@ const cadastroValidator = {
         
     },
 
+    telefone: {
+        required: 'Campo Obrigatório!',
+        minLength: {
+            value: 14,
+            message: 'Coloque o Telefone Completo'
+        }
+    },
+
     unidade: {
         required: 'Selecione a Unidade',
         minLength: {
