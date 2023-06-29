@@ -5,8 +5,11 @@ import React from 'react'
 import { Button, Card, Col, Row } from 'react-bootstrap'
 
 const index = () => {
+    
     return (
         <Pagina>
+  
+
             <Row md={4}>
                 <Col className='mb-3'>
                     <Card sx={{ maxWidth: 345 }}>
