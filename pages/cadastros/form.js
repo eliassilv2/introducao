@@ -69,26 +69,13 @@ const form = () => {
                             isInvalid={errors.telefone}
                             mask='(99)99999-9999'
                             maxLength={14}
-                            type="text" 
+                            type="text"
                             {...register('telefone', cadastroValidator.telefone)}
                             onChange={handleChange}
                             placeholder='(XX)XXXXX-XXXX' />
                         {
                             errors.telefone &&
                             <small className='mt-1'>{errors.telefone.message}</small>
-                        }
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="unidade">
-                        <Form.Label>Unidade: </Form.Label>
-                        <Form.Control
-                            isInvalid={errors.unidade}
-                            maxLength={7} type="text" {...
-                            register('unidade', cadastroValidator.unidade)}
-                            placeholder='Blocos A, B ou C' />
-                        {
-                            errors.unidade &&
-                            <small className='mt-1'>{errors.unidade.message}</small>
                         }
                     </Form.Group>
 
@@ -104,6 +91,18 @@ const form = () => {
                         }
                     </Form.Group>
 
+                    <Form.Group className="mb-3" controlId="unidade">
+                        <Form.Label>Unidade: </Form.Label>
+                        <Form.Control
+                            isInvalid={errors.unidade}
+                            maxLength={7} type="text" {...
+                            register('unidade', cadastroValidator.unidade)}
+                            placeholder='Blocos A, B ou C' />
+                        {
+                            errors.unidade &&
+                            <small className='mt-1'>{errors.unidade.message}</small>
+                        }
+                    </Form.Group>
                     <Form.Group className="mb-3" controlId="pagamento">
                         <Form.Label>Forma de Pagamento: </Form.Label>
                         <Form.Control
